@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <Windows.h>
 void distance();
 
 
@@ -84,16 +85,54 @@ void distance() {
 
 
 
+void WhiteMores() {
+
+    std::string question = "Понятно, дело твоё, но ты знаещь наши правила, говори пароль\n";
+    std::string pasword1 = "Кнут";
+    std::string pasword2 = "Хлопок";
+    std::string otvet;
+
+    std::cout << "О Дуглас, решил пропустисть пару стаканов на ночь?\n";
+    std::cout << "Или в просадить все деньги в покер?\n Дуглас: Денег сейчас на покер не водится, у меня вообще другие планы\n";
+    std::cout << question;
+    std::cin >> otvet;
+
+    if (otvet == pasword1)
+    {
+        std::cout << "Молодец, знаешь наше исинное призвание, заходи\n";
+    }
+    else if (otvet == pasword1) {
+        std::cout << "Что, решил потопить за собирателей урожая, ты либо пьян, либо отупел\n";
+    }
+    else
+    {
+        std::cout << "Тебе мозги вправить, а то мне тут уже стоять счучно. НЕ собираюсь я от тебя это выслушивать\n";
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 //
 int main()
    {
+    SetConsoleCP(1251);
     srand(time(NULL));
     setlocale(LC_ALL, "Russian");
     //game();
-    start();
+    //start();
+    WhiteMores();
 }
 
 
