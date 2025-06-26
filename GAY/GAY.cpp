@@ -8,7 +8,26 @@ void Bar();
 
 
 
+struct GG
+{
+    unsigned age;
+    std::string name;
+    unsigned hp;
+    unsigned attack;
+    unsigned weapon;
+    
+};
 
+
+
+
+    GG Duglas;
+    GG enemy;
+    
+
+
+
+       
 
 
 
@@ -16,7 +35,7 @@ void Bar();
 
 
 void game() {
-
+ 
     int bot = 1 + rand() % 3;
     int user;
     int i = 1;
@@ -84,7 +103,21 @@ void distance() {
 
 }
 
+void InitGame() {
 
+
+    Duglas.hp = 100;
+    Duglas.attack = 10;
+    Duglas.name = "Duglas";
+    Duglas.age = 23;
+
+
+    enemy.name = "guard";
+    enemy.age = 37;
+    enemy.weapon = 15;
+
+
+}
 
 void Street() {
 
@@ -116,31 +149,29 @@ void Street() {
 
 void Fight() {
 
-    int enemy = 1 + rand() % 100;
-    int Duglas;
-    int HP = 100;
-    int EHP = 150;
-    int attack = 10;
-    int weapon = 15;
+    
+    int chance = 1 + rand() % 100;
 
-    std::cin >> Duglas;
+    int choice;
+
+    std::cin >> choice;
 
 
 
 
 
-    switch (Duglas)
+    switch (choice)
     {
     case 1:
         std::cout << "Удар по голове\n";
 
-        if (enemy <= 20) {
-        EHP -= attack + (1 + rand() % 30);
+        if (chance <= 20) {
+        enemy.hp -= Duglas.attack + (1 + rand() % 30);
         std::cout << "POPAL\n";
         }
         else {
             std::cout << "MISS\n";
-        HP -= attack + weapon;
+        Duglas.hp -= Duglas.attack + enemy.weapon;
         }
         break;
 
@@ -148,13 +179,13 @@ void Fight() {
     case 2:
         std::cout << "Удар по груди\n";
 
-        if (enemy <= 35) {
-            EHP -= attack + (1 + rand() % 25);
+        if (chance <= 35) {
+            enemy.hp-= Duglas.attack + (1 + rand() % 25);
             std::cout << "POPAL\n";
         }
         else {
             std::cout << "MISS\n";
-            HP -= attack + weapon;
+            Duglas.hp -= Duglas.attack + enemy.weapon;
         }
         break;
 
@@ -162,13 +193,13 @@ void Fight() {
     case 3:
         std::cout << "Удар по рукам\n";
 
-        if (enemy <= 70) {
-            EHP -= attack + (1 + rand() % 15);
+        if (chance <= 70) {
+            enemy.hp -= Duglas.attack + (1 + rand() % 15);
             std::cout << "POPAL\n";
         }
         else {
             std::cout << "MISS\n";
-            HP -= attack + weapon;
+            Duglas.hp -= Duglas.attack + enemy.weapon;
         }
         break;
 
@@ -176,13 +207,13 @@ void Fight() {
     case 4:
         std::cout << "Удар по животу\n";
 
-        if (enemy <= 40) {
-            EHP -= attack + (1 + rand() % 20);
+        if (chance <= 40) {
+            enemy.hp -= Duglas.attack + (1 + rand() % 20);
             std::cout << "POPAL\n";
         }
         else {
             std::cout << "MISS\n";
-            HP -= attack + weapon;
+            Duglas.hp -= Duglas.attack + enemy.weapon;
         }
         break;
 
@@ -190,27 +221,27 @@ void Fight() {
     case 5:
         std::cout << "Удар в пах\n";
 
-        if (enemy <= 30) {
-            EHP -= attack + (1 + rand() % 40);
+        if (chance <= 30) {
+            enemy.hp -= Duglas.attack + (1 + rand() % 40);
             std::cout << "POPAL\n";
         }
         else {
             std::cout << "MISS\n";
-            HP -= attack + weapon;
+            Duglas.hp -= Duglas.attack + enemy.weapon;
         }
         break;
 
 
     case 6:
-        std::cout << "Удар по рукам\n";
+        std::cout << "Удар по ногам\n";
 
-        if (enemy <= 25) {
-            EHP -= attack + (1 + rand() % 20);
+        if (chance <= 25) {
+            enemy.hp -= Duglas.attack + (1 + rand() % 20);
             std::cout << "POPAL\n";
         }
         else {
             std::cout << "MISS\n";
-            HP -= attack + weapon;
+            Duglas.hp -= Duglas.attack + enemy.weapon;
         }
         break;
 
@@ -292,11 +323,26 @@ int main()
  SetConsoleCP(1251);
  srand(time(NULL));
  setlocale(LC_ALL, "Russian");
+  
+InitGame();
+ 
+ std::cout << "Name : " << Duglas.name << " \nAge : " << Duglas.age << std::endl;
+ 
+
+ 
+
+
+
+
+
  //game();
  //start();
  //Street();
- Bar();
- 
+ //Bar();
+ while (Duglas.hp <= 0 || enemy.hp <= 0) {
+ Fight();
+
+ }
 }
 
 
