@@ -12,7 +12,7 @@ struct GG
 {
     unsigned age;
     std::string name;
-    unsigned hp;
+    int hp;
     unsigned attack;
     unsigned weapon;
     
@@ -115,7 +115,7 @@ void InitGame() {
     enemy.name = "guard";
     enemy.age = 37;
     enemy.weapon = 15;
-
+    enemy.hp = 120;
 
 }
 
@@ -147,6 +147,10 @@ void Street() {
        
 }
 
+    void Interface() {
+
+    }
+
 void Fight() {
 
     
@@ -159,34 +163,45 @@ void Fight() {
 
 
 
-
     switch (choice)
     {
-    case 1:
+    case 1: {
         std::cout << "Удар по голове\n";
 
         if (chance <= 20) {
-        enemy.hp -= Duglas.attack + (1 + rand() % 30);
-        std::cout << "POPAL\n";
+            int r = Duglas.attack + (1 + rand() % 35);
+            enemy.hp -= r;
+            std::cout << "POPAL\n" << "DUGLASS ATTACK\t" << r << std::endl << 
+            "ENEMY HP \t" << enemy.hp << std::endl;
+
         }
         else {
             std::cout << "MISS\n";
-        Duglas.hp -= Duglas.attack + enemy.weapon;
-        }
-        break;
+            Duglas.hp -= Duglas.attack + enemy.weapon;
 
+        }
+            std::cout << "HP DUGLAS: \t" << Duglas.hp <<
+            std::endl << "ENEMY HP \t" << enemy.hp << std::endl;
+    }
+        break;
+        
+        
 
     case 2:
         std::cout << "Удар по груди\n";
 
-        if (chance <= 35) {
-            enemy.hp-= Duglas.attack + (1 + rand() % 25);
-            std::cout << "POPAL\n";
+        if (chance <= 35){
+        int r = Duglas.attack + (1 + rand() & 30);
+            enemy.hp -= r;
+            std::cout << "POPAL\n" << "DUGLAS ATTACK\n" << r << std::endl;
+            
         }
         else {
             std::cout << "MISS\n";
             Duglas.hp -= Duglas.attack + enemy.weapon;
         }
+        std::cout << "HP DUGLAS: \t" << Duglas.hp <<
+            std::endl << "ENEMY HP \t" << enemy.hp << std::endl;
         break;
 
 
@@ -194,13 +209,20 @@ void Fight() {
         std::cout << "Удар по рукам\n";
 
         if (chance <= 70) {
-            enemy.hp -= Duglas.attack + (1 + rand() % 15);
-            std::cout << "POPAL\n";
+            int r = Duglas.attack + (1 + rand() & 15);
+            enemy.hp -= r;
+            std::cout << "POPAL\n" << "DUGLAS ATTACK\n" << r << std::endl <<
+                "ENEMY HP \t" << enemy.hp << std::endl;
+
+           
+           
         }
         else {
             std::cout << "MISS\n";
             Duglas.hp -= Duglas.attack + enemy.weapon;
         }
+        std::cout << "HP DUGLAS: \t" << Duglas.hp <<
+            std::endl << "ENEMY HP \t" << enemy.hp << std::endl;
         break;
 
 
@@ -208,13 +230,17 @@ void Fight() {
         std::cout << "Удар по животу\n";
 
         if (chance <= 40) {
-            enemy.hp -= Duglas.attack + (1 + rand() % 20);
-            std::cout << "POPAL\n";
+            int r = Duglas.attack + (1 + rand() & 20);
+            enemy.hp -= r;
+            std::cout << "POPAL\n" << "DUGLAS ATTACK\n" << r << std::endl <<
+                "ENEMY HP \t" << enemy.hp << std::endl;
+
         }
         else {
             std::cout << "MISS\n";
             Duglas.hp -= Duglas.attack + enemy.weapon;
         }
+        std::cout << "HP DUGLAS: \t" << Duglas.hp;
         break;
 
 
@@ -222,13 +248,17 @@ void Fight() {
         std::cout << "Удар в пах\n";
 
         if (chance <= 30) {
-            enemy.hp -= Duglas.attack + (1 + rand() % 40);
-            std::cout << "POPAL\n";
+            int r = Duglas.attack + (1 + rand() & 40);
+            enemy.hp -= r;
+            std::cout << "POPAL\n" << "DUGLAS ATTACK\n" << r << std::endl;
+
         }
         else {
             std::cout << "MISS\n";
             Duglas.hp -= Duglas.attack + enemy.weapon;
         }
+        std::cout << "HP DUGLAS: \t" << Duglas.hp <<
+            std::endl << "ENEMY HP \t" << enemy.hp << std::endl;
         break;
 
 
@@ -236,13 +266,16 @@ void Fight() {
         std::cout << "Удар по ногам\n";
 
         if (chance <= 25) {
-            enemy.hp -= Duglas.attack + (1 + rand() % 20);
-            std::cout << "POPAL\n";
+            int r = Duglas.attack + (1 + rand() & 20);
+            enemy.hp -= r;
+            std::cout << "POPAL\n" << "DUGLAS ATTACK\n" << r << std::endl;
         }
         else {
             std::cout << "MISS\n";
             Duglas.hp -= Duglas.attack + enemy.weapon;
         }
+        std::cout << "HP DUGLAS: \t" << Duglas.hp <<
+            std::endl << "ENEMY HP \t" << enemy.hp <<
         break;
 
     }
@@ -339,7 +372,7 @@ InitGame();
  //start();
  //Street();
  //Bar();
- while (Duglas.hp <= 0 || enemy.hp <= 0) {
+ while (Duglas.hp > 0 && enemy.hp > 0) {
  Fight();
 
  }
